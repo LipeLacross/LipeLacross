@@ -8,7 +8,7 @@
   
 </div>
 <strong>👉Technologies</strong> 
-<div>  
+<div style="display: inline_block">  
   <img align= "center" alt="Lacross-Windows" height="30" width="40" src= "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/windows8/windows8-original.svg">
   <img align= "center" alt="Lacross-Linux" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" />
   <img align="center" alt="Lacross-VScode" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg">
