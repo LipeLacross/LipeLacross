@@ -7,7 +7,7 @@
 <div>
 <strong>👉Technologies</strong> 
 </div>
-<div style="display: inline_block">
+<div style="display: inline_block">  
   <img align= "center" alt="Lacross-Windows" height="30" width="40" src= "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/windows8/windows8-original.svg">
   <img align= "center" alt="Lacross-Linux" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" />
   <img align="center" alt="Lacross-VScode" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg">
@@ -17,7 +17,7 @@
 </div>
 <div align="center" style="display: inline_block"><br>
   <div>
-    <img img align="left" alt="Lacross-pic" height="180" width="180" style="border-radius:100px;"src="https://64.media.tumblr.com/3e6c75a5f027b17e3c7bf80ee79c6789/tumblr_inline_ovxqvsRq781t19jz7_1280.gif"/>
+    <img img align="left" alt="Lacross-pic" height="160" width="160" style="border-radius:100px;"src="https://64.media.tumblr.com/3e6c75a5f027b17e3c7bf80ee79c6789/tumblr_inline_ovxqvsRq781t19jz7_1280.gif"/>
   </div>
   <a href="https://github.com/LipeLacross">
   <img height="180em" src="https://github-readme-stats.vercel.app/api?username=LipeLacross&&show_icons=true&theme=github_dark&include_all_commits=true&count_private=true"/>
