@@ -2,7 +2,8 @@
 <div>
   <a href="https://www.instagram.com/lipe_lacross/" target="_blank"><img src="https://img.shields.io/badge/-Instagram-%23E4405F?style=for-the-badge&logo=instagram&logoColor=white" target="_blank"></a>
   <a href = "mailto:feliperioscross.br@gmail.com"><img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
-  <a href="https://www.linkedin.com/in/felipe-moreira-523b35238/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a> 
+  <a href="https://www.linkedin.com/in/felipe-moreira-523b35238/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a>
+  <img img align="center" alt="Lacross-pic" height="100" width="100" style="border-radius:100px;"src="https://64.media.tumblr.com/3e6c75a5f027b17e3c7bf80ee79c6789/tumblr_inline_ovxqvsRq781t19jz7_1280.gif"/> 
 </div>
 <div>
 <strong>👉Technologies</strong> 
@@ -15,10 +16,7 @@
   <img align = "center" alt = "Lacross-Java" height="30" width = "40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg">
   <img align="center" alt="Lacross-VScode" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg">
 </div>
-<div align="center" style="display: inline_block"><br>
-  <div>
-    <img img align="left" alt="Lacross-pic" height="160" width="160" style="border-radius:100px;"src="https://64.media.tumblr.com/3e6c75a5f027b17e3c7bf80ee79c6789/tumblr_inline_ovxqvsRq781t19jz7_1280.gif"/>
-  </div>
+<div align="left" style="display: inline_block"><br>
   <a href="https://github.com/LipeLacross">
   <img height="180em" src="https://github-readme-stats.vercel.app/api?username=LipeLacross&&show_icons=true&theme=github_dark&include_all_commits=true&count_private=true"/>
   <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=LipeLacross&&layout=langs_count=8&theme=github_dark"/>
