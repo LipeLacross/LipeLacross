@@ -1,4 +1,4 @@
-### Olá, eu sou Felipe Moreira🫡
+### Hello, i'm Felipe Moreira🫡
 <div>
   <a href="https://www.instagram.com/lipe_lacross/" target="_blank"><img src="https://img.shields.io/badge/-Instagram-%23E4405F?style=for-the-badge&logo=instagram&logoColor=white" target="_blank"></a>
   <a href = "mailto:feliperioscross.br@gmail.com"><img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
@@ -7,7 +7,7 @@
   ##
   
 </div>
-<strong>👉Technologies</strong> 
+<strong>👉Most used technologies</strong> 
 <div style="display: inline_block">  
   <img align= "center" alt="Lacross-Windows" height="30" width="40" src= "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/windows8/windows8-original.svg">
   <img align= "center" alt="Lacross-Linux" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" />
