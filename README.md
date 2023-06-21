@@ -24,7 +24,7 @@
   
   <img height="180em" src="https://github-readme-stats.vercel.app/api?username=LipeLacross&&show_icons=true&theme=github_dark&include_all_commits=true&count_private=true"/>
   
-  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=LipeLacross&&layout=langs_count=4&&theme=github_dark&&hide=jupyter%20notebook"/>
+  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=LipeLacross&layout=compact&hide=jupyter%20notebook&show_icons=true&theme=github_dark"/>
 </div>
   
 ![Snake animation](https://github.com/LipeLacross/LipeLacross/blob/output/github-contribution-grid-snake.svg)
