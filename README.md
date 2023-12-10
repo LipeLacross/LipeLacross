@@ -9,16 +9,19 @@
   
   ##
   
+<!--
 </div>
 <strong>👉Most used technologies</strong> 
 <div style="display: inline_block">
   <img align="center" alt="Lacross-Python" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg">
-  <img align = "center" alt ="Lacross-Java" height="30" width = "40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"/>
+  <img align="center" alt="Lacross-Java" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"/>
   <img align="center" alt="Lacross-C" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg"/>
-  <!--<img align= "center" alt="Lacross-Javascript" height="30" width="40" src= "https://www.svgrepo.com/show/349419/javascript.svg"/>-->
-  <!--<img align= "center" alt="Lacross-Css" height="30" width="40" src="https://www.svgrepo.com/show/452185/css-3.svg"/>-->
-  <!--<img align="center" alt="Lacross-Html" height="30" width="40" src="https://www.svgrepo.com/show/452228/html-5.svg"/>-->
+  <!--<img align="center" alt="Lacross-Javascript" height="30" width="40" src="https://www.svgrepo.com/show/349419/javascript.svg"/>
+  <!--<img align="center" alt="Lacross-Css" height="30" width="40" src="https://www.svgrepo.com/show/452185/css-3.svg"/>
+  <!--<img align="center" alt="Lacross-Html" height="30" width="40" src="https://www.svgrepo.com/show/452228/html-5.svg"/>
 </div>
+-->
+
 <div align="left" style="display: inline_block"><br>
   <a href="https://github.com/LipeLacross">
   
