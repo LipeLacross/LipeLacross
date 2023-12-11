@@ -1,33 +1,18 @@
-### Hello, i'm Felipe Moreira🫡
-<div>
-  <a href="https://www.instagram.com/lipe_lacross/" target="_blank"><img src="https://img.shields.io/badge/-Instagram-%23E4405F?style=for-the-badge&logo=instagram&logoColor=white" target="_blank">
-  </a>
-  <a href = "mailto:feliperioscross.br@gmail.com"><img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"
-  </a>
-  <a href="https://www.linkedin.com/in/felipe-moreira-523b35238/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white">
-  </a>
-  
-  ##
-  
-<!--
-</div>
-<strong>👉Most used technologies</strong> 
-<div style="display: inline_block">
-  <img align="center" alt="Lacross-Python" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg">
-  <img align="center" alt="Lacross-Java" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"/>
-  <img align="center" alt="Lacross-C" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg"/>
-  <!--<img align="center" alt="Lacross-Javascript" height="30" width="40" src="https://www.svgrepo.com/show/349419/javascript.svg"/>
-  <!--<img align="center" alt="Lacross-Css" height="30" width="40" src="https://www.svgrepo.com/show/452185/css-3.svg"/>
-  <!--<img align="center" alt="Lacross-Html" height="30" width="40" src="https://www.svgrepo.com/show/452228/html-5.svg"/>
-</div>
--->
+<h1 align="center">
+<img src="https://readme-typing-svg.herokuapp.com/?font=Righteous&size=35&center=true&vCenter=true&width=500&height=70&duration=4000&lines=olá!+👋;+me+chamo+Felipe!+🫡;" />
+</h1>
+# 💫 About Me:
+As a tech student, I'm immersed in the programming world, where logic meets creativity in code. I aim to become a full-stack developer, combining front-end and back-end skills for robust solutions. Every project is a chance to learn, fueling my ambition to make a meaningful impact in IT.<br><br>
 
-<div align="left" style="display: inline_block"><br>
-  <a href="https://github.com/LipeLacross">
-  
-  <img height="180em" src="https://github-readme-stats.vercel.app/api?username=LipeLacross&&show_icons=true&theme=github_dark&include_all_commits=true&count_private=true"/>
-  
-  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=LipeLacross&layout=compact&hide=jupyter%20notebook&show_icons=true&theme=github_dark"/>
-</div>
-  
-![Snake animation](https://github.com/LipeLacross/LipeLacross/blob/output/github-contribution-grid-snake.svg)
+## 🌐 Socials:
+[![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white)](https://instagram.com/lipe_lacross) [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/felipe-moreira-fullstack) 
+# 💻 Tech Stack:
+![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white) ![Canva](https://img.shields.io/badge/Canva-%2300C4CC.svg?style=for-the-badge&logo=Canva&logoColor=white) ![MySQL](https://img.shields.io/badge/mysql-%2300000f.svg?style=for-the-badge&logo=mysql&logoColor=white) ![SQLite](https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white) ![Apache](https://img.shields.io/badge/apache-%23D42029.svg?style=for-the-badge&logo=apache&logoColor=white) ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+# 📊 GitHub Stats:
+![](https://github-readme-stats.vercel.app/api?username=LipeLacross&theme=city_light&hide_border=true&include_all_commits=false&count_private=false)<br/>
+![](https://github-readme-streak-stats.herokuapp.com/?user=LipeLacross&theme=city_light&hide_border=true)<br/>
+![](https://github-readme-stats.vercel.app/api/top-langs/?username=LipeLacross&theme=city_light&hide_border=true&include_all_commits=false&count_private=false&layout=compact&hide=jupyter%20notebook&show)
+
+<h1 align="center">
+<img src="https://readme-typing-svg.herokuapp.com/?font=Righteous&size=35&center=true&vCenter=true&width=500&height=70&duration=4000&lines=obrigado+pela+atenção!;" />
+</h1>
