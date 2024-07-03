@@ -2,7 +2,7 @@
 <img src="https://readme-typing-svg.herokuapp.com/?font=Righteous&size=35&center=true&vCenter=true&width=500&height=70&duration=4000&lines=olá!+👋;+me+chamo+Felipe!+🫡;" />
 </h1>
 # 💫 About Me:
-As a tech student, I'm immersed in the programming world, where logic meets creativity in code. I aim to become a full-stack developer, combining front-end and back-end skills for robust solutions. Every project is a chance to learn, fueling my ambition to make a meaningful impact in IT.<br><br>
+As a tech student, I'm immersed in the programming world, where logic meets creativity in code. I aim to become a developer, combining front-end and back-end skills for robust solutions. Every project is a chance to learn, fueling my ambition to make a meaningful impact in IT.<br><br>
 
 ## 🌐 Socials:
 [![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white)](https://instagram.com/lipe_lacross) [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/felipe-moreira-fullstack) 
