@@ -47,6 +47,12 @@ As a tech student, I'm immersed in the programming world, where logic meets crea
 ![](https://github-readme-streak-stats.herokuapp.com/?user=LipeLacross&theme=city_light&hide_border=true)<br/>
 ![](https://github-readme-stats.vercel.app/api/top-langs/?username=LipeLacross&theme=city_light&hide_border=true&include_all_commits=false&count_private=false&layout=compact&hide=jupyter%20notebook&show)
 
+<picture align="center">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mari4souza/LipeLacross/output/github-contribution-grid-snake-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mari4souza/LipeLacross/output/github-contribution-grid-snake-dark.svg">
+  <img align="center" alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/LipeLacross/mari4souza/output/github-contribution-grid-snake.svg">
+</picture>
+
 <h1 align="center">
   <img src="https://readme-typing-svg.herokuapp.com/?font=Righteous&size=35&center=true&vCenter=true&width=500&height=70&duration=4000&lines=obrigado+pela+atenção!;" />
 </h1>
