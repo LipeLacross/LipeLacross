@@ -3,7 +3,13 @@
 </h1>
 
 # 💫 About Me:
-As a tech student, I'm immersed in the programming world, where logic meets creativity in code. I aim to become a developer, combining front-end and back-end skills for robust solutions. Every project is a chance to learn, fueling my ambition to make a meaningful impact in IT.
+<p>
+  As a tech student, I'm immersed in the programming world, where logic meets creativity in code. I aim to become a developer, combining front-end and back-end skills for robust solutions. Every project is a chance to learn, fueling my ambition to make a meaningful impact in IT.
+</p align="center">
+
+<h1 align="center">
+  <img alt="" height="150px" src="https://media1.tenor.com/m/qh5NLYdnpskAAAAC/homer-simpson-studying.gif">
+</h1>
 
 # 💻 Tech Stack:
 
