@@ -4,8 +4,7 @@
 
 # 💫 About Me
 <p align="center">
-  As a tech student, I'm immersed in the programming world, where logic meets creativity in code. I aim to become a developer, combining front-end and back-end skills for robust solutions. Every project is a chance to learn, fueling my ambition to make a meaningful impact in IT.
-</p>
+As a tech student, I’m immersed in the world of programming, where logic meets creativity in code. My goal is to become a well-rounded developer, combining front-end and back-end skills to create robust and innovative solutions. Each project is a valuable learning opportunity that fuels my ambition to make a significant impact in IT.</p>
 
 <h1 align="center">
   <img alt="Studying GIF" height="150px" src="https://media1.tenor.com/m/qh5NLYdnpskAAAAC/homer-simpson-studying.gif">
