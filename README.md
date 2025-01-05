@@ -83,6 +83,8 @@ As a tech student, I’m immersed in the world of programming, where logic meets
   <img src="https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white" alt="Supabase">
   <img src="https://img.shields.io/badge/expo-1C1E24?style=for-the-badge&logo=expo&logoColor=#D04A37" alt="Expo">
   <img src="https://img.shields.io/badge/Kubernetes-3069DE?style=for-the-badge&logo=kubernetes&logoColor=white" alt="Kurbenetes">
+  <img src="https://img.shields.io/badge/n8n-0A92E1?style=for-the-badge&logo=n8n&logoColor=white)" alt="n8n"
+
 </div>
 
 # 📊 GitHub Stats
