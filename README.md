@@ -13,7 +13,7 @@ As a tech student, I’m immersed in the world of programming, where logic meets
   <img alt="Studying GIF" height="150px" src="https://media1.tenor.com/m/qh5NLYdnpskAAAAC/homer-simpson-studying.gif">
 </h1>
 
-# 💻 Tech Stack
+# 💻 Experiencies
 
 ## 🔹Frontend
 
