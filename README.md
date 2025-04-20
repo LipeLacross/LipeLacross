@@ -86,8 +86,6 @@ As a tech student, I’m immersed in the world of programming, where logic meets
 
 # 📚 Study
 <div align="left">
-  <img src="https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white" alt="Supabase">
-  <img src="https://img.shields.io/badge/n8n-%2300E5FF.svg?style=for-the-badge&logo=n8n&logoColor=white" alt="n8n">
   <img src="https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white" alt="Flutter Badge">
 </div>
 
