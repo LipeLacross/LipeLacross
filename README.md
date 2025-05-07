@@ -89,11 +89,14 @@ As a tech student, I’m immersed in the world of programming, where logic meets
   <img src="https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white" alt="Flutter Badge">
 </div>
 
+# 🏆 GitHub Trophy
+[![trophy](https://github-profile-trophy.vercel.app/?username=LipeLacross&theme=flat&column=7)](https://github.com/LipeLacross)
+
 # 📊 GitHub Stats
 <div align="center">
   <img src="https://github-readme-stats.vercel.app/api?username=LipeLacross&theme=city_light&hide_border=true&include_all_commits=false&count_private=false" alt="GitHub Stats"><br/>
   <img src="https://github-readme-streak-stats.herokuapp.com/?user=LipeLacross&theme=city_light&hide_border=true" alt="GitHub Streak Stats"><br/>
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=LipeLacross&theme=city_light&hide_border=true&include_all_commits=false&count_private=false&layout=compact&hide=jupyter%20notebook&show" alt="Top Languages">
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=LipeLacross&theme=city_light&hide_border=true&include_all_commits=false&count_private=false&layout=compact&hide=jupyter%20notebook" alt="Top Languages">
 </div>
 
 <picture align="center">
