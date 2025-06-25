@@ -130,6 +130,7 @@ As a tech student, I’m immersed in the world of programming, where logic meets
 <div align="left">
   <img src="https://img.shields.io/badge/-HuggingFace-FDEE21?style=for-the-badge&logo=HuggingFace&logoColor=black" alt="HuggingFace">
   <img src="https://img.shields.io/badge/Google%20Gemini-8E75B2?style=for-the-badge&logo=googlegemini&logoColor=white" alt="Google Gemini">
+  <img src="https://img.shields.io/badge/OpenRouter-073AFF?style=for-the-badge&logo=openrouter&logoColor=white" alt="OpenRouter">
   <img src="https://img.shields.io/badge/ChatGPT-74aa9c?style=for-the-badge&logo=openai&logoColor=white" alt="ChatGPT">
   <img src="https://img.shields.io/badge/n8n-%232B2B2B?style=for-the-badge&logo=n8n&logoColor=white" alt="n8n">
 </div>
