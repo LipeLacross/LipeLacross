@@ -15,9 +15,14 @@ As a tech student, I’m immersed in the world of programming, where logic meets
   <img src="https://readme-typing-svg.herokuapp.com/?font=Righteous&size=28&center=true&vCenter=true&width=1500&color=FFDD48&height=50&duration=10000&lines=Ora,+a+fé+é+a+certeza+daquilo+que+esperamos+e+a+prova+das+coisas+que+não+vemos.+🙌" />
 </p>
 
+
 <p align="center">
-  <img alt="Studying GIF" height="150px" src="https://media1.tenor.com/m/qh5NLYdnpskAAAAC/homer-simpson-studying.gif">
+  <img alt="Cat typing fast" height="160px" width="160px" src="https://media1.tenor.com/m/y2JXkY1pXkwAAAAC/cat-computer.gif" />
+  <img alt="Cat eating" height="160px" width="160px" src="https://media1.tenor.com/m/C3jcJKFgluUAAAAd/ramen-ramen-cat.gif" />
+  <img alt="Laptop work" height="160px" width="160px" src="https://media1.tenor.com/m/DimzPZMypFcAAAAd/laptop.gif" />
 </p>
+
+
 
 ## 🏆 GitHub Trophy
 <p align="center">
