@@ -7,7 +7,7 @@
 ## 💫 About Me
 
 <div align="center">
-  <img src="https://readme-typing-svg.herokuapp.com/?font=Righteous&size=28&center=true&vCenter=true&width=1500&color=FFDD48&height=50&duration=10000&lines=Ora,+a+fé+é+a+certeza+daquilo+que+esperamos+e+a+prova+das+coisas+que+não+vemos.+🙌" />
+  <img src="https://readme-typing-svg.herokuapp.com/?font=Righteous&size=32&center=true&vCenter=true&width=1500&color=FFDD48&height=50&duration=10000&lines=Ora,+a+fé+é+a+certeza+daquilo+que+esperamos+e+a+prova+das+coisas+que+não+vemos.+🙌" />
 </div>
 
 <div align="center">
