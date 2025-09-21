@@ -33,6 +33,7 @@ Inclui checklists, playbooks, <b>tabela multi-banco completa</b>, snippets e pla
 * [Cheat sheets úteis (JS/TS/Python/Java)](#-cheat-sheets-úteis-jstspythonjava)
 * [Checklist final (5 min antes)](#-checklist-final-5-min-antes)
 * [Notas rápidas + Setup Supabase](#-notas-rápidas--setup-supabase)
+* 🔥 **[Supabase SDK — JS/TS & Python (Recipes completas)](#-supabase-sdk--jsts--python-recipes-completas)**  ← (ADICIONADO)
 
 ---
 
@@ -854,3 +855,405 @@ const supabase = createClient(
 <div style="text-align:center; background:#FFDD48; border-radius:16px; padding:12px 14px; font-weight:800;">
 Pronto! Todo o conteúdo foi reunido no <b>README gigante</b>, sem tirar nada — com a tabela multi-banco completa e todas as seções expandidas. Boa preparação! 💛
 </div>
+
+---
+
+# 🔥 Supabase SDK — **JS/TS & Python (Recipes completas)** *(ADICIONADO)*
+
+<div style="background:#FFDD48; border-radius:12px; padding:10px 12px; font-weight:700;">
+Tudo abaixo foi <u>adicionado</u> sem remover nada do seu README. Foco em uso prático do Supabase em <b>JS/TS</b> e <b>Python</b> (Auth, Storage, CRUD, filtros, paginação, RLS, RPC, Realtime, tipos, testes).
+</div>
+
+## 📦 Instalação & Ambiente
+
+**JavaScript/TypeScript**
+
+```bash
+npm i @supabase/supabase-js
+# ou
+pnpm add @supabase/supabase-js
+```
+
+```ts
+import { createClient } from "@supabase/supabase-js";
+
+export const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,     // NUNCA vaze a service_role no client
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY! // Chave ANON no front
+);
+```
+
+**Python**
+
+```bash
+pip install supabase
+```
+
+```py
+import os
+from supabase import create_client, Client
+
+supabase_url: str = os.environ["SUPABASE_URL"]
+supabase_key: str = os.environ["SUPABASE_KEY"]  # use a ANON no client; service_role só no backend
+supabase: Client = create_client(supabase_url, supabase_key)
+```
+
+<div style="background:#FFF8B0; border-left:8px solid #FFDD48; padding:8px 10px; border-radius:8px;">
+🔐 <b>Segurança:</b> Chave <code>service_role</code> <u>nunca</u> vai para o navegador/app móvel. Use-a apenas no backend para tarefas administrativas.
+</div>
+
+---
+
+## 🧑‍💻 CRUD, Filtros, Ordenação e Paginação
+
+**JS/TS — CRUD + filtros**
+
+```ts
+// Create
+const { data: inserted, error: e1 } = await supabase
+  .from("usuarios")
+  .insert([{ nome: "Ana", idade: 25 }]);
+
+// Read (filtros)
+const { data: rows, error: e2 } = await supabase
+  .from("usuarios")
+  .select("id, nome, idade")
+  .gt("idade", 18)            // > 18
+  .ilike("nome", "%an%");     // case-insensitive
+
+// Update
+const { error: e3 } = await supabase
+  .from("usuarios")
+  .update({ idade: 30 })
+  .eq("nome", "Ana");
+
+// Delete
+const { error: e4 } = await supabase
+  .from("usuarios")
+  .delete()
+  .eq("nome", "Ana");
+```
+
+**JS/TS — Ordenação + paginação (`range`)**
+
+```ts
+const page = 3, size = 10;
+const from = (page - 1) * size;
+const to = from + size - 1;
+
+const { data, error } = await supabase
+  .from("usuarios")
+  .select("*")
+  .order("idade", { ascending: false, nullsFirst: false })
+  .range(from, to);
+```
+
+**Python — CRUD + filtros**
+
+```py
+# Create
+res = supabase.table("usuarios").insert({"nome": "Ana", "idade": 25}).execute()
+
+# Read (filtros)
+res = (
+  supabase.table("usuarios")
+  .select("id, nome, idade")
+  .gt("idade", 18)
+  .ilike("nome", "%an%")
+  .execute()
+)
+rows = res.data
+
+# Update
+supabase.table("usuarios").update({"idade": 30}).eq("nome", "Ana").execute()
+
+# Delete
+supabase.table("usuarios").delete().eq("nome", "Ana").execute()
+```
+
+**Python — Ordenação + paginação**
+
+```py
+page, size = 3, 10
+start, end = (page - 1) * size, (page * size) - 1
+
+res = (
+  supabase.table("usuarios")
+  .select("*")
+  .order("idade", desc=True)
+  .range(start, end)
+  .execute()
+)
+```
+
+---
+
+## ♻️ UPSERT (conflitos), Joins aninhados e Views
+
+**JS/TS — UPSERT com `onConflict`**
+
+```ts
+await supabase
+  .from("usuarios")
+  .upsert([{ id: 1, nome: "Ana", idade: 25 }], { onConflict: "id" });
+```
+
+**JS/TS — “join” via relação (PostgREST)**
+
+```ts
+// suponha: pedidos(usuario_id) -> usuarios(id)
+const { data } = await supabase
+  .from("pedidos")
+  .select(`
+    id, valor, created_at,
+    usuarios:usuario_id ( id, nome )
+  `)
+  .eq("usuarios.nome", "Ana");
+```
+
+**Python — UPSERT e relação**
+
+```py
+supabase.table("usuarios").upsert({"id": 1, "nome": "Ana", "idade": 25}).execute()
+
+res = (
+  supabase.table("pedidos")
+  .select("id, valor, created_at, usuarios:usuario_id ( id, nome )")
+  .eq("usuarios.nome", "Ana")
+  .execute()
+)
+```
+
+> 💡 Para <b>views materializadas</b> e CTEs, use SQL puro no Supabase (mesmo dialeto do PostgreSQL).
+
+---
+
+## 🔐 Auth (email/senha, OAuth, sessão) e RLS
+
+**JS/TS — Email/senha & sessão atual**
+
+```ts
+const { data: signInData, error } = await supabase.auth.signInWithPassword({
+  email: "ana@example.com",
+  password: "secret"
+});
+
+const {
+  data: { user, session }
+} = await supabase.auth.getSession();
+
+await supabase.auth.signOut();
+```
+
+**JS/TS — OAuth (ex.: GitHub)**
+
+```ts
+await supabase.auth.signInWithOAuth({ provider: "github" });
+```
+
+**Python — Email/senha & logout**
+
+```py
+auth = supabase.auth.sign_in_with_password({"email": "ana@example.com", "password": "secret"})
+current = supabase.auth.get_session()
+supabase.auth.sign_out()
+```
+
+**RLS — Policies úteis (SQL)**
+
+```sql
+ALTER TABLE public.usuarios ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "read_self" ON public.usuarios
+FOR SELECT USING (auth.uid() = id);
+
+CREATE POLICY "insert_self" ON public.usuarios
+FOR INSERT WITH CHECK (auth.uid() = id);
+
+CREATE POLICY "update_self" ON public.usuarios
+FOR UPDATE USING (auth.uid() = id) WITH CHECK (auth.uid() = id);
+```
+
+> ⚠️ Teste suas queries com e sem sessão (ANON vs service\_role) para garantir que as policies funcionem como esperado.
+
+---
+
+## 🗂️ Storage (upload, public URL, signed URL)
+
+**JS/TS**
+
+```ts
+// Upload (Blob/File no browser)
+await supabase.storage.from("bucket").upload("avatars/ana.png", file);
+
+// Public URL (se o bucket for público)
+const { data: pub } = supabase.storage.from("bucket").getPublicUrl("avatars/ana.png");
+
+// Signed URL (expira em 60s)
+const { data: signed } = await supabase
+  .storage
+  .from("bucket")
+  .createSignedUrl("avatars/ana.png", 60);
+```
+
+**Python**
+
+```py
+# Upload (bytes ou caminho)
+with open("ana.png", "rb") as f:
+    supabase.storage.from_("bucket").upload("avatars/ana.png", f)
+
+# Public URL
+pub = supabase.storage.from_("bucket").get_public_url("avatars/ana.png")
+
+# Signed URL
+signed = supabase.storage.from_("bucket").create_signed_url("avatars/ana.png", 60)
+```
+
+---
+
+## 📡 Realtime (escuta de mudanças)
+
+**JS/TS — Postgres Changes**
+
+```ts
+const channel = supabase
+  .channel("room")
+  .on("postgres_changes",
+    { event: "*", schema: "public", table: "usuarios" },
+    payload => console.log("change:", payload)
+  )
+  .subscribe();
+
+// ... depois
+supabase.removeChannel(channel);
+```
+
+---
+
+## 🧮 RPC (funções SQL)
+
+**PostgreSQL (SQL)**
+
+```sql
+CREATE OR REPLACE FUNCTION total_pedidos(uid uuid)
+RETURNS integer
+LANGUAGE sql
+AS $$
+  SELECT COUNT(*) FROM pedidos WHERE usuario_id = uid;
+$$;
+```
+
+**JS/TS — chamar RPC**
+
+```ts
+const { data, error } = await supabase.rpc("total_pedidos", { uid: "..." });
+```
+
+**Python — chamar RPC**
+
+```py
+res = supabase.rpc("total_pedidos", {"uid": "..."}).execute()
+```
+
+---
+
+## ✅ Padrões de erro & Retentativas
+
+**JS/TS**
+
+```ts
+const { data, error } = await supabase.from("u").select("*");
+if (error) {
+  console.error(error);
+  // backoff simples
+  await new Promise(r => setTimeout(r, 300));
+  // tente novamente se fizer sentido...
+}
+```
+
+**Python**
+
+```py
+res = supabase.table("u").select("*").execute()
+if res.error:
+    print(res.error)
+    # estratégia de retry se for transitório
+```
+
+---
+
+## 🧰 TypeScript: tipos fortes (Database)
+
+Gere tipos do esquema e use no client para autocompletar/checar colunas:
+
+```ts
+// types/database.ts (exemplo de tipo gerado, simplificado)
+export type Database = {
+  public: {
+    Tables: {
+      usuarios: {
+        Row: { id: string; nome: string; idade: number | null };
+        Insert: { id?: string; nome: string; idade?: number | null };
+        Update: { nome?: string; idade?: number | null };
+      };
+    };
+  };
+};
+```
+
+```ts
+import { createClient } from "@supabase/supabase-js";
+import type { Database } from "./types/database";
+
+const supabase = createClient<Database>(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+);
+
+// agora supabase.from("usuarios") fica tipado
+```
+
+> 💛 Vantagem: menos erro de coluna/campo e melhor DX durante a entrevista.
+
+---
+
+## 🧪 Testes (JS/TS & Python) com Supabase
+
+**JS/TS (Vitest/Jest) — integração leve**
+
+```ts
+import { supabase } from "../src/db";
+
+test("insere e lê usuario", async () => {
+  const { error: e1 } = await supabase.from("usuarios").insert([{ nome: "Ana", idade: 25 }]);
+  expect(e1).toBeNull();
+
+  const { data, error: e2 } = await supabase.from("usuarios").select("*").eq("nome", "Ana").single();
+  expect(e2).toBeNull();
+  expect(data?.idade).toBe(25);
+});
+```
+
+**Python (pytest)**
+
+```py
+from supabase import create_client
+
+def test_insert_read(monkeypatch):
+    supabase = create_client("http://...", "anon-key")
+    supabase.table("usuarios").insert({"nome":"Ana","idade":25}).execute()
+    res = supabase.table("usuarios").select("*").eq("nome","Ana").single().execute()
+    assert res.data["idade"] == 25
+```
+
+---
+
+## 🧭 Boas práticas rápidas (JS/TS & Python)
+
+* **Paginação estável**: combine `.order("id")` com `.range(...)` e “cursor” quando fizer sentido.
+* **Idempotência**: use `.upsert` com `onConflict` para evitar duplicatas.
+* **Políticas RLS**: sempre escreva `SELECT/INSERT/UPDATE/DELETE` separadas e teste com contas diferentes.
+* **Erros**: padronize respostas (mapeie `PostgREST` errors para seus DTOs).
+* **Tipos (TS)**: gere `Database` e injete no `createClient<Database>()`.
+* **Service tasks**: no backend, use `service_role` para tarefas administrativas (ex.: seeds/migrações), nunca no cliente.
