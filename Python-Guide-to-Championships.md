@@ -1,11 +1,10 @@
-
 # README — **Python do Zero ao Amador PRO** (Maratona SBC / ICPC / OBI)
 
-> Estrutura pensada para começar **bem básico** (lógica de programação) e ir **ficando mais difícil** até as técnicas que mais caem em campeonatos amadores. Tudo com exemplos em **Python 3.10+**.
+> Começa **do básico** e evolui até um nível **amador PRO** de competições. Foco em Python 3.10+, com exemplos prontos, padrões que mais caem e um **kit padrão** para copiar e colar. Inclui otimizações específicas de Python, estruturas clássicas e casos de prova.
 
 ---
 
-## 📌 Sumário rápido
+## 📌 Sumário
 
 1. [Lógica de Programação — Fundamentos](#1-lógica-de-programação--fundamentos)
 2. [Estruturas de Dados Básicas](#2-estruturas-de-dados-básicas)
@@ -24,6 +23,22 @@
 15. [Geometria Computacional](#15-geometria-computacional)
 16. [Padrões de Problema e Dicas de Prova](#16-padrões-de-problema-e-dicas-de-prova)
 17. [Mini *Stress Test* / Gerador de Casos](#17-mini-stress-test--gerador-de-casos)
+18. [⚙️ Otimizações e Truques de Performance no Python](#18-️-otimizações-e-truques-de-performance-no-python)
+19. [🧰 Biblioteca Padrão Útil no Competitivo](#19--biblioteca-padrão-útil-no-competitivo)
+20. [🧠 Tabelas de Complexidade por Estrutura](#20--tabelas-de-complexidade-por-estrutura)
+21. [🧱 Compressão de Coordenadas e Diferenças](#21--compressão-de-coordenadas-e-diferenças)
+22. [🧮 Extras de Matemática (Miller–Rabin, CRT, Ex-CRT)](#22--extras-de-matemática-miller–rabin-crt-ex-crt)
+23. [🕸️ Grafos Avançados (SCC, Pontes, Articulações, Euleriano)](#23--grafos-avançados-scc-pontes-articulações-euleriano)
+24. [🌳 Árvores Avançadas (LCA, Euler Tour, DP em árvore)](#24--árvores-avançadas-lca-euler-tour-dp-em-árvore)
+25. [🧵 Pilha/Fila Monotônica, Janela Máxima, "Sweep Line"](#25--pilhafila-monotônica-janela-máxima-sweep-line)
+26. [🧩 Busca Binária na Resposta (com *check*)](#26--busca-binária-na-resposta-com-check)
+27. [🧵 DP Otimizada (Bitset, Monotônica, D\&C)](#27--dp-otimizada-bitset-monotônica-dc)
+28. [🧪 Casos de Teste e Debug Rápido](#28--casos-de-teste-e-debug-rápido)
+29. [🗣️ Interativo (esqueleto)](#29--interativo-esqueleto)
+30. [📎 Padrões Resolvidos (Receitas)](#30--padrões-resolvidos-receitas)
+31. [🧾 Template Geral de Competição](#31--template-geral-de-competição)
+
+> **Nota honesta**: “tudo de Python” é infinito. Este guia cobre **o essencial + intermediário** (e alguns tópicos avançados) que **mais aparecem** em provas amadoras e etapas iniciais.
 
 ---
 
@@ -335,8 +350,11 @@ import math
 MOD = 10**9 + 7
 
 def gcd(a,b): return math.gcd(a,b)
+
 def lcm(a,b): return a//gcd(a,b)*b
+
 def modpow(a,e,m=MOD): return pow(a,e,m)
+
 def modinv(a,m=MOD): return pow(a, m-2, m)  # m primo
 ```
 
@@ -446,6 +464,42 @@ class SegTree:
         return res
 ```
 
+> **Extra**: SegTree com *lazy propagation* (soma em intervalo + incremento) — versão curta:
+
+```python
+class SegLazy:
+    def __init__(self, n):
+        self.N=1
+        while self.N<n: self.N<<=1
+        self.st=[0]*(2*self.N)
+        self.lz=[0]*(2*self.N)
+    def _push(self, i, l, r):
+        if self.lz[i]!=0 and l!=r:
+            mid=(l+r)//2
+            for ch in (i<<1, i<<1|1):
+                self.lz[ch]+=self.lz[i]
+            self.st[i<<1]+= (mid-l+1)*self.lz[i]
+            self.st[i<<1|1]+= (r-mid)*self.lz[i]
+            self.lz[i]=0
+    def _upd(self, i,l,r,ql,qr,val):
+        if qr<l or r<ql: return
+        if ql<=l and r<=qr:
+            self.st[i]+= (r-l+1)*val; self.lz[i]+=val; return
+        self._push(i,l,r)
+        m=(l+r)//2
+        self._upd(i<<1,l,m,ql,qr,val)
+        self._upd(i<<1|1,m+1,r,ql,qr,val)
+        self.st[i]=self.st[i<<1]+self.st[i<<1|1]
+    def _qry(self,i,l,r,ql,qr):
+        if qr<l or r<ql: return 0
+        if ql<=l and r<=qr: return self.st[i]
+        self._push(i,l,r)
+        m=(l+r)//2
+        return self._qry(i<<1,l,m,ql,qr)+self._qry(i<<1|1,m+1,r,ql,qr)
+    def update(self,l,r,val): self._upd(1,0,self.N-1,l,r,val)
+    def query(self,l,r): return self._qry(1,0,self.N-1,l,r)
+```
+
 ---
 
 ## 10) Grafos
@@ -479,6 +533,7 @@ def bfs(s, adj):
 
 ```python
 import heapq
+
 def dijkstra(s, adjw):
     INF=10**18; n=len(adjw)
     dist=[INF]*n; dist[s]=0
@@ -491,12 +546,29 @@ def dijkstra(s, adjw):
             if nd<dist[v]:
                 dist[v]=nd; heapq.heappush(pq,(nd,v))
     return dist
+
+from collections import deque
+
+def zero_one_bfs(s, adj01):  # adj01[u]: (v, w in {0,1})
+    INF=10**18; n=len(adj01)
+    dist=[INF]*n; dist[s]=0
+    dq=deque([s])
+    while dq:
+        u=dq.popleft()
+        for v,w in adj01[u]:
+            nd=dist[u]+w
+            if nd<dist[v]:
+                dist[v]=nd
+                if w==0: dq.appendleft(v)
+                else: dq.append(v)
+    return dist
 ```
 
 **Topológica (Kahn)**
 
 ```python
 from collections import deque
+
 def toposort(n, adj):
     indeg=[0]*n
     for u in range(n):
@@ -578,7 +650,7 @@ def dfs_tree(u, p, adj, pai, prof):
 # 1) BFS de 0 acha extremo A; 2) BFS de A acha B; dist(A,B)=diâmetro
 ```
 
-*(Opcional)* **LCA (Binary Lifting)** — útil em níveis seguintes, mas geralmente acima do amador iniciante.
+> (LCA completo em seção 24.)
 
 ---
 
@@ -607,7 +679,38 @@ def kmp_search(text, pat):
     return res
 ```
 
-**Z-function** (alternativa a KMP) e **hashing de string** são úteis para problemas de substrings.
+> Extras: Z-function, *rolling hash* e Manacher — ver seção 12.1 abaixo.
+
+**12.1) Extras de String**
+
+```python
+# Rolling hash (esqueleto)
+BASE=911382323; MOD=10**9+7
+
+def build_hash(s):
+    n=len(s)
+    p=[1]*(n+1); h=[0]*(n+1)
+    for i,ch in enumerate(s):
+        p[i+1]=p[i]*BASE%MOD
+        h[i+1]=(h[i]*BASE+ord(ch))%MOD
+    return p,h
+
+def get_hash(h,p,l,r):  # [l,r)
+    return (h[r]-h[l]*p[r-l])%MOD
+
+# Manacher (maior palíndromo em O(n))
+
+def manacher(s):
+    s = "|"+"|".join(s)+"|"
+    n=len(s); d=[0]*n; l=r=0
+    for i in range(n):
+        k = 1 if i>r else min(d[l+r-i], r-i+1)
+        while i-k>=0 and i+k<n and s[i-k]==s[i+k]: k+=1
+        d[i]=k; k-=1
+        if i+k>r: l=i-k; r=i+k
+    # d[i]-1 é raio no original sem barras
+    return d
+```
 
 ---
 
@@ -628,6 +731,7 @@ def knapsack(weights, values, W):
 
 ```python
 import bisect
+
 def lis_len(a):
     d=[]
     for x in a:
@@ -823,7 +927,516 @@ if __name__ == "__main__":
 
 ---
 
-## Template Geral de Competição (cole no início dos seus códigos)
+## 18) ⚙️ Otimizações e Truques de Performance no Python
+
+* Use **PyPy** quando disponível (melhor para laços pesados, estruturas puras de Python). Em algumas DPs com muita recursão, CPython + `pypy3` podem variar — teste local.
+* **I/O**: substitua `input` por `sys.stdin.readline`; para *bulk*, use `sys.stdin.buffer.read()`.
+* **`setrecursionlimit`** para DFS/recursões profundas:
+
+```python
+import sys
+sys.setrecursionlimit(1_000_000)
+```
+
+* **Binding local** (micro): dentro do laço, capture funções em variáveis locais para evitar *lookup* repetido.
+
+```python
+push = heapq.heappush; pop = heapq.heappop
+for ...:
+    push(pq, x)
+```
+
+* **`join`** é mais rápido que múltiplos `print`:
+
+```python
+print("\n".join(map(str, ans)))
+```
+
+* Evite criar listas enormes sem necessidade; prefira **geradores** quando possível.
+
+---
+
+## 19) 🧰 Biblioteca Padrão Útil no Competitivo
+
+```python
+from functools import lru_cache
+
+@lru_cache(maxsize=None)
+def f(n):
+    if n<2: return n
+    return f(n-1)+f(n-2)
+```
+
+```python
+import itertools as it
+# receitas comuns
+pairs = list(it.pairwise([1,2,3,4]))   # [(1,2),(2,3),(3,4)]
+prod  = list(it.product([0,1], repeat=3))
+perms = list(it.permutations([1,2,3]))
+combs = list(it.combinations([1,2,3], 2))
+acc   = list(it.accumulate([1,2,3]))   # prefix sums
+```
+
+```python
+from collections import Counter, defaultdict, deque
+cnt = Counter("banana")
+last = defaultdict(lambda: -1)
+```
+
+```python
+import math
+math.isclose(0.1+0.2, 0.3, rel_tol=1e-9, abs_tol=0.0)
+```
+
+---
+
+## 20) 🧠 Tabelas de Complexidade por Estrutura
+
+**Lista**
+
+| Operação              | Custo aprox. |
+| --------------------- | ------------ |
+| `append`, `pop()`     | O(1) amort.  |
+| `pop(0)`, `insert(i)` | O(n)         |
+| `sort`/`sorted`       | O(n log n)   |
+| `x in lista`          | O(n)         |
+
+**`dict`/`set`**
+
+| Operação       | Custo médio |
+| -------------- | ----------- |
+| `get/set/in`   | O(1)        |
+| iteração total | O(n)        |
+
+**`heapq`**
+
+| Operação       | Custo    |
+| -------------- | -------- |
+| `heappush/pop` | O(log n) |
+| `heapify`      | O(n)     |
+
+**`deque`**
+
+| Operação         | Custo |
+| ---------------- | ----- |
+| `append/popleft` | O(1)  |
+| `appendleft/pop` | O(1)  |
+
+---
+
+## 21) 🧱 Compressão de Coordenadas e Diferenças
+
+**Compressão** (mapear valores grandes para 0..k-1):
+
+```python
+def compress(vals):
+    uniq = {v:i for i,v in enumerate(sorted(set(vals)))}
+    return [uniq[v] for v in vals], uniq
+```
+
+**Array de diferenças (1D)** — atualizações em intervalo + reconstrução:
+
+```python
+def apply_updates(n, updates):
+    # updates: (l,r,delta)
+    diff=[0]*(n+1)
+    for l,r,d in updates:
+        diff[l]+=d; diff[r+1]-=d
+    a=[0]*n; cur=0
+    for i in range(n):
+        cur+=diff[i]; a[i]=cur
+    return a
+```
+
+**Prefixo 2D**
+
+```python
+def prefix2d(mat):
+    n=len(mat); m=len(mat[0])
+    p=[[0]*(m+1) for _ in range(n+1)]
+    for i in range(1,n+1):
+        s=0
+        for j in range(1,m+1):
+            s+=mat[i-1][j-1]
+            p[i][j]=p[i-1][j]+s
+    return p
+
+def rect_sum(p, x1,y1,x2,y2):  # inclusivo
+    return p[x2+1][y2+1]-p[x1][y2+1]-p[x2+1][y1]+p[x1][y1]
+```
+
+---
+
+## 22) 🧮 Extras de Matemática (Miller–Rabin, CRT, Ex-CRT)
+
+**Miller–Rabin determinístico para 64-bit**
+
+```python
+def is_probable_prime(n:int)->bool:
+    if n<2: return False
+    small_primes=[2,3,5,7,11,13,17,19,23,29]
+    for p in small_primes:
+        if n%p==0: return n==p
+    d=n-1; s=0
+    while d%2==0: d//=2; s+=1
+    def check(a):
+        x=pow(a,d,n)
+        if x==1 or x==n-1: return True
+        for _ in range(s-1):
+            x=(x*x)%n
+            if x==n-1: return True
+        return False
+    # bases suficientes p/ 2^64
+    for a in [2, 3, 5, 7, 11, 13]:
+        if not check(a): return False
+    return True
+```
+
+**Chinês (CRT) — 2 módulos coprimos**
+
+```python
+def crt2(a1, m1, a2, m2):
+    # resolve x ≡ a1 (mod m1), x ≡ a2 (mod m2)
+    # supõe gcd(m1,m2)=1
+    inv = pow(m1, -1, m2)
+    return (a1 + (a2 - a1)*inv % m2 * m1) % (m1*m2)
+```
+
+---
+
+## 23) 🕸️ Grafos Avançados (SCC, Pontes, Articulações, Euleriano)
+
+**SCC (Kosaraju)**
+
+```python
+def scc_kosaraju(n, adj):
+    g=adj
+    rg=[[] for _ in range(n)]
+    for u in range(n):
+        for v in g[u]: rg[v].append(u)
+    vis=[False]*n; order=[]
+    def dfs1(u):
+        vis[u]=True
+        for v in g[u]:
+            if not vis[v]: dfs1(v)
+        order.append(u)
+    for u in range(n):
+        if not vis[u]: dfs1(u)
+    comp=[-1]*n
+    def dfs2(u,c):
+        comp[u]=c
+        for v in rg[u]:
+            if comp[v]==-1: dfs2(v,c)
+    c=0
+    for u in reversed(order):
+        if comp[u]==-1:
+            dfs2(u,c); c+=1
+    return c, comp
+```
+
+**Pontes e Articulações (Tarjan)**
+
+```python
+def bridges_articulations(n, adj):
+    timer=0
+    tin=[-1]*n; low=[-1]*n
+    bridges=[]; arti=set()
+    def dfs(u,p=-1):
+        nonlocal timer
+        tin[u]=low[u]=timer; timer+=1
+        ch=0
+        for v in adj[u]:
+            if v==p: continue
+            if tin[v]!=-1:
+                low[u]=min(low[u], tin[v])
+            else:
+                dfs(v,u); ch+=1
+                low[u]=min(low[u], low[v])
+                if low[v]>tin[u]: bridges.append((u,v))
+                if p!=-1 and low[v]>=tin[u]: arti.add(u)
+        if p==-1 and ch>1: arti.add(u)
+    for u in range(n):
+        if tin[u]==-1: dfs(u)
+    return bridges, sorted(arti)
+```
+
+**Caminho Euleriano (grafo não-dirigido)**
+
+```python
+def has_eulerian_path_undirected(deg, comp_is_single):
+    odd = sum(d%2 for d in deg)
+    if not comp_is_single: return False
+    return odd in (0,2)
+```
+
+---
+
+## 24) 🌳 Árvores Avançadas (LCA, Euler Tour, DP em árvore)
+
+**LCA por *binary lifting***
+
+```python
+def build_lca(adj, root=0):
+    n=len(adj); LOG=(n).bit_length()
+    up=[[0]*n for _ in range(LOG)]
+    depth=[0]*n
+    import collections
+    q=collections.deque([root])
+    order=[root]; up[0][root]=root; depth[root]=0
+    vis=[False]*n; vis[root]=True
+    while q:
+        u=q.popleft()
+        for v in adj[u]:
+            if vis[v]: continue
+            vis[v]=True; up[0][v]=u; depth[v]=depth[u]+1
+            q.append(v)
+    for k in range(1,LOG):
+        for v in range(n): up[k][v]=up[k-1][ up[k-1][v] ]
+    def lca(a,b):
+        if depth[a]<depth[b]: a,b=b,a
+        da=depth[a]-depth[b]
+        k=0
+        while da:
+            if da&1: a=up[k][a]
+            da>>=1; k+=1
+        if a==b: return a
+        for k in range(LOG-1,-1,-1):
+            if up[k][a]!=up[k][b]:
+                a=up[k][a]; b=up[k][b]
+        return up[0][a]
+    return lca, depth
+```
+
+**Euler Tour (subárvore em intervalo)**
+
+```python
+def euler_tour(adj, root=0):
+    n=len(adj); tin=[0]*n; tout=[0]*n; t=0
+    order=[]
+    def dfs(u,p=-1):
+        nonlocal t
+        tin[u]=t; order.append(u); t+=1
+        for v in adj[u]:
+            if v==p: continue
+            dfs(v,u)
+        tout[u]=t-1
+    dfs(root)
+    return tin, tout, order
+```
+
+**DP em árvore (tamanho de subárvore)**
+
+```python
+def subtree_sizes(adj, root=0):
+    n=len(adj); sz=[1]*n
+    def dfs(u,p=-1):
+        for v in adj[u]:
+            if v==p: continue
+            dfs(v,u); sz[u]+=sz[v]
+    dfs(root); return sz
+```
+
+---
+
+## 25) 🧵 Pilha/Fila Monotônica, Janela Máxima, "Sweep Line"
+
+**Janela Máxima (deque monotônica)**
+
+```python
+from collections import deque
+
+def sliding_max(a, k):
+    dq=deque(); res=[]
+    for i,x in enumerate(a):
+        while dq and dq[0]<=i-k: dq.popleft()
+        while dq and a[dq[-1]]<=x: dq.pop()
+        dq.append(i)
+        if i>=k-1: res.append(a[dq[0]])
+    return res
+```
+
+**Pilha Monotônica (próximo maior à direita)**
+
+```python
+def next_greater(arr):
+    n=len(arr); ans=[-1]*n; st=[]
+    for i,x in enumerate(arr):
+        while st and arr[st[-1]]<x:
+            ans[st.pop()]=i
+        st.append(i)
+    return ans
+```
+
+**Sweep line (intervalos)**
+
+```python
+def max_overlap(intervals):
+    ev=[]
+    for l,r in intervals:
+        ev.append((l,1)); ev.append((r,-1))
+    ev.sort()
+    cur=best=0
+    for _,d in ev:
+        cur+=d; best=max(best,cur)
+    return best
+```
+
+---
+
+## 26) 🧩 Busca Binária na Resposta (com *check*)
+
+**Exemplo**: minimizar maior soma de subarray em `k` partes.
+
+```python
+def can(a, k, lim):
+    s=0; cuts=1
+    for x in a:
+        if x>lim: return False
+        if s+x>lim:
+            cuts+=1; s=x
+        else: s+=x
+    return cuts<=k
+
+def minimize_largest_split_sum(a, k):
+    lo, hi = max(a), sum(a)
+    while lo<hi:
+        mid=(lo+hi)//2
+        if can(a,k,mid): hi=mid
+        else: lo=mid+1
+    return lo
+```
+
+---
+
+## 27) 🧵 DP Otimizada (Bitset, Monotônica, D\&C)
+
+**Subset sum com *bitset* usando `int`**
+
+```python
+def subset_sum_possible(vals, S):
+    bit=1
+    for x in vals:
+        bit |= (bit<<x)
+    return (bit>>S)&1
+```
+
+**DP com fila monotônica (otimização de janela)** — esqueleto clássico para `dp[i]=min(dp[i-1], dp[j]+c(i,j))` com `j` numa janela.
+
+**Divide & Conquer DP** — avançado; útil quando o *argmin* é monótono.
+
+---
+
+## 28) 🧪 Casos de Teste e Debug Rápido
+
+* Gere **aleatórios** + uma solução lenta para comparar (seção 17).
+* Teste **bordas**: `n=1`, todos iguais, estritamente crescente/decrescente, valores máximos, zerados.
+* Adicione `assert` para invariantes dentro de laços críticos.
+
+---
+
+## 29) 🗣️ Interativo (esqueleto)
+
+```python
+import sys
+
+def ask(x):
+    print(x)
+    sys.stdout.flush()
+    return input().strip()
+
+# Uso: r = ask("? 5 7") ; processa resposta
+```
+
+---
+
+## 30) 📎 Padrões Resolvidos (Receitas)
+
+**Dois-sum** (índices 0-based):
+
+```python
+def two_sum(a, target):
+    pos={}
+    for i,x in enumerate(a):
+        if target-x in pos: return (pos[target-x], i)
+        pos[x]=i
+    return None
+```
+
+**Longest substring sem repetir** (janela):
+
+```python
+def length_longest_unique(s):
+    last={}; l=0; best=0
+    for r,ch in enumerate(s):
+        if ch in last and last[ch]>=l:
+            l=last[ch]+1
+        last[ch]=r
+        best=max(best, r-l+1)
+    return best
+```
+
+**BFS em grade**
+
+```python
+from collections import deque
+
+def bfs_grid(grid):
+    n=len(grid); m=len(grid[0])
+    dist=[[-1]*m for _ in range(n)]
+    D=[(1,0),(-1,0),(0,1),(0,-1)]
+    q=deque()
+    # adicionar fontes
+    for i in range(n):
+        for j in range(m):
+            if grid[i][j]=='S':
+                dist[i][j]=0; q.append((i,j))
+    while q:
+        x,y=q.popleft()
+        for dx,dy in D:
+            nx,ny=x+dx,y+dy
+            if 0<=nx<n and 0<=ny<m and grid[nx][ny]!="#" and dist[nx][ny]==-1:
+                dist[nx][ny]=dist[x][y]+1
+                q.append((nx,ny))
+    return dist
+```
+
+**Floyd–Warshall** (todas as pares):
+
+```python
+def floyd_warshall(dist):
+    n=len(dist)
+    for k in range(n):
+        for i in range(n):
+            for j in range(n):
+                nd=dist[i][k]+dist[k][j]
+                if nd<dist[i][j]: dist[i][j]=nd
+    return dist
+```
+
+**Bellman–Ford** (detecta ciclos negativos):
+
+```python
+def bellman_ford(n, edges, s):  # edges: (u,v,w)
+    INF=10**18
+    dist=[INF]*n; dist[s]=0
+    for _ in range(n-1):
+        ch=False
+        for u,v,w in edges:
+            if dist[u]<INF and dist[u]+w<dist[v]:
+                dist[v]=dist[u]+w; ch=True
+        if not ch: break
+    # ciclo negativo alcançável?
+    neg=[False]*n
+    for _ in range(1):
+        for u,v,w in edges:
+            if dist[u]<INF and dist[u]+w<dist[v]:
+                neg[v]=True
+    return dist, neg
+```
+
+---
+
+## 31) 🧾 Template Geral de Competição
 
 ```python
 # -*- coding: utf-8 -*-
@@ -833,6 +1446,7 @@ from collections import deque, Counter, defaultdict
 import math
 import bisect
 import heapq
+
 # input rápido
 def input():
     return sys.stdin.readline().rstrip()
@@ -845,5 +1459,13 @@ def main():
     pass
 
 if __name__ == "__main__":
+    # sys.setrecursionlimit(1_000_000)
     main()
 ```
+
+---
+
+### ✅ O que ficou de fora de propósito (avançado demais p/ amador)
+
+* Suffix Array/Automaton completos, HLD + segtree pesados, Mo’s Algorithm com *Hilbert order*, Min-Cost Max-Flow, Dinic/HLPP, FFT/NTT, Pollard Rho, DP Convex Hull Trick formal.
+* Se precisar de algum tópico destes, adicione uma seção nova neste README e cole o esqueleto — os *hooks* de integração já estão acima.
