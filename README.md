@@ -30,18 +30,17 @@
 
 ## 🏆 GitHub Trophy
 <p align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=LipeLacross&theme=flat&no-frame=true&margin-w=10" alt="GitHub Trophy"/>
+  <img src="https://github-profile-trophy.vercel.app/?username=LipeLacross&theme=flat&no-frame=true&margin-w=10" alt="GitHub Trophy" />
 </p>
 
 ## 📊 GitHub Stats
 <div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=LipeLacross&theme=city_light&hide_border=true&include_all_commits=false&count_private=false&title_color=FFDD48&icon_color=FFDD48&text_color=000000" alt="GitHub Stats"/><br/>
+  <img src="https://github-readme-stats.vercel.app/api?username=LipeLacross&theme=city_light&hide_border=true&include_all_commits=false&count_private=false&title_color=FFDD48&icon_color=FFDD48&text_color=000000" alt="GitHub Stats" /><br/>
   
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=LipeLacross&theme=city_light&hide_border=true&ring=FFDD48&fire=FFDD48&currStreakLabel=FFDD48" alt="GitHub Streak Stats"/><br/>
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=LipeLacross&theme=city_light&hide_border=true&ring=FFDD48&fire=FFDD48&currStreakLabel=FFDD48" alt="GitHub Streak Stats" /><br/>
   
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=LipeLacross&theme=city_light&hide_border=true&include_all_commits=false&count_private=false&layout=compact&hide=jupyter%20notebook&title_color=FFDD48&text_color=000000" alt="Top Languages"/>
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=LipeLacross&theme=city_light&hide_border=true&include_all_commits=false&count_private=false&layout=compact&hide=jupyter%20notebook&title_color=FFDD48&text_color=000000" alt="Top Languages" />
 </div>
-
 
 ## 🐍 GitHub Contributions
 <p align="center">
